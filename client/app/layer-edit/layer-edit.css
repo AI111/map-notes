@@ -1,1 +1,12 @@
-#mapid { height: 500px; }
+#mapid {
+height: 100%;
+}
+layer-edit{
+	height: 100%;
+}
+#parent{
+	height: 100%
+}
+.fabToolbardemoBasicUsage md-fab-toolbar.md-right md-fab-trigger.align-with-text {
+  left: 7px; }
+

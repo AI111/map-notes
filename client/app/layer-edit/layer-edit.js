@@ -4,7 +4,7 @@ angular.module('mapNotesApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('layer-edit', {
-        url: '/layer-edit',
-        template: '<layer-edit></layer-edit>'
+        url: '/layer-edit/:layerID',
+        template: '<layer-edit layout="column" class="flex"></layer-edit>'
       });
   });

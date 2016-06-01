@@ -1,15 +1,15 @@
 /**
- * Thing model events
+ * MapNote model events
  */
 
 'use strict';
 
 import {EventEmitter} from 'events';
-import Thing from './thing.model';
-var ThingEvents = new EventEmitter();
+import MapNote from './map-note.model';
+var MapNoteEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)
-ThingEvents.setMaxListeners(0);
+MapNoteEvents.setMaxListeners(0);
 
 // Model events
 var events = {
@@ -20,14 +20,14 @@ var events = {
 // Register the event emitter to the model events
 for (var e in events) {
   var event = events[e];
-  Thing.schema.post(e, emitEvent(event));
+  MapNote.schema.post(e, emitEvent(event));
 }
 
 function emitEvent(event) {
   return function(doc) {
-    ThingEvents.emit(event + ':' + doc._id, doc);
-    ThingEvents.emit(event, doc);
+    MapNoteEvents.emit(event + ':' + doc._id, doc);
+    MapNoteEvents.emit(event, doc);
   }
 }
 
-export default ThingEvents;
+export default MapNoteEvents;

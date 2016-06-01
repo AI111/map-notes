@@ -1,1 +1,59 @@
-<div>this is the drawerMenu directive</div>
+<div ng-controller="DrawerMenuController" ng-cloak>
+  <md-toolbar>
+    <div id="profile" layout="column" ng-show="nav.isLoggedIn()" >
+      <img name="profile-img" class="lg-avatar user-avatar-background" ng-src="{{getCurrentUser().imgUrl}}"/>
+      <h4 name="profile-name" class="navbar-text">Name {{ drawer.getCurrentUser().name }}</h4>
+      <h5 name="profile-email" class="navbar-text">email: {{ drawer.getCurrentUser().email}}</h5>
+
+    </div>
+  </md-toolbar>
+  <md-list>
+    <md-list-item  md-ink-ripple ng-show="!drawer.isLoggedIn()">
+      <a name="login" class="flex"  href="/login" layout="row" layout-align="start center">
+        <div class="inset">
+          <md-icon md-svg-icon="/assets/icons/ic_login_24px.svg"></md-icon>
+        </div>
+        <md-item-content  layout="row" layout-align="start center">
+          <div class="inset">Login</div>
+        </md-item-content>
+      </a>
+    </md-list-item>
+
+    <md-list-item  md-ink-ripple ng-show="drawer.isLoggedIn()" >
+      <a name="logout" class="flex"  href="" ng-click="logout()" layout="row" layout-align="start center">
+        <div class="inset">
+          <md-icon md-svg-icon="/assets/icons/ic_logout_24px.svg"></md-icon>
+        </div>
+        <md-item-content  layout="row" layout-align="start center" class="flex">
+          <div class="inset flex">Logout</div>
+        </md-item-content>
+      </a>
+    </md-list-item>
+
+    <md-list-item md-ink-ripple ng-show="!isLoggedIn()">
+      <a class="flex"  href="/signup" layout="row" layout-align="start center">
+        <div class="inset">
+          <md-icon md-svg-icon="/assets/icons/ic_assignment_ind_black_24px.svg"></md-icon>
+        </div>
+        <md-item-content  layout="row" layout-align="start center" class="flex">
+          <div class="inset">Sign up</div>
+        </md-item-content>
+      </a>
+    </md-list-item>
+    <!--</md-list>-->
+    <md-divider></md-divider>
+    <md-subheader class="md-no-sticky">Menu</md-subheader>
+    <!--<md-list >-->
+    <md-list-item  md-ink-ripple ng-repeat="item in drawer.menu" ui-sref-active="active">
+      <a ui-sref="{{item.state}}" flex>
+        <md-item-content  layout="row" layout-align="start center" >
+          <div class="inset">
+            <md-icon md-svg-icon="{{item.icon}}" ></md-icon>
+          </div>
+          <div class="inset">{{item.title}}
+          </div>
+        </md-item-content>
+      </a>
+    </md-list-item>
+  </md-list>
+</div>

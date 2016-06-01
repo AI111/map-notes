@@ -1,6 +1,9 @@
+/**
+ * Created by sasha on 13.05.16.
+ */
 'use strict';
 
-class NavbarController {
+class DrawerMenuController {
   //start-non-standard
   menu = [{
     'title': 'Home',
@@ -10,13 +13,13 @@ class NavbarController {
     {
       'title': 'Notes',
       'state': 'map-note',
-      icon: '/assets/icons/ic_home_24px.svg'
-    },
-    {
-      'title': 'Edit Map',
-      'state': 'layer-edit',
-      icon: '/assets/icons/ic_home_24px.svg'
+      icon: '/assets/icons/ic_note_black_24px.svg'
     }
+    // ,{
+    //   'title': 'Edit Map',
+    //   'state': 'layer-edit',
+    //   icon: '/assets/icons/ic_map_black_24px.svg'
+    // }
   ];
 
   isCollapsed = true;
@@ -30,4 +33,4 @@ class NavbarController {
 }
 
 angular.module('mapNotesApp')
-  .controller('NavbarController', NavbarController);
+  .controller('DrawerMenuController', DrawerMenuController);

@@ -1,0 +1,25 @@
+<md-dialog aria-label="Create Person">
+  <md-content class="md-padding" ng-cloak class="md-inline-form">
+    <form name="userForm">
+      <div layout-padding>
+        <div layout="column">
+          <md-input-container md-no-float class="md-block">
+            <input  ng-model="user.Name" md-maxlength="100" placeholder="Note name">
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Description</label>
+            <textarea ng-model="user.Description" md-maxlength="500" rows="7" md-select-on-focus></textarea>
+          </md-input-container>
+        </div>
+
+      </div>
+
+    </form>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="answer('useful')" class="md-primary"> Save </md-button>
+    <md-button ng-click="answer('not useful')"> Cancel </md-button>
+  </div>
+</md-dialog>
+

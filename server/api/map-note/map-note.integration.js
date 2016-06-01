@@ -3,40 +3,40 @@
 var app = require('../..');
 import request from 'supertest';
 
-var newThing;
+var newMapNote;
 
-describe('Thing API:', function() {
+describe('MapNote API:', function() {
 
-  describe('GET /api/things', function() {
-    var things;
+  describe('GET /api/map-notes', function() {
+    var mapNotes;
 
     beforeEach(function(done) {
       request(app)
-        .get('/api/things')
+        .get('/api/map-notes')
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           if (err) {
             return done(err);
           }
-          things = res.body;
+          mapNotes = res.body;
           done();
         });
     });
 
     it('should respond with JSON array', function() {
-      things.should.be.instanceOf(Array);
+      mapNotes.should.be.instanceOf(Array);
     });
 
   });
 
-  describe('POST /api/things', function() {
+  describe('POST /api/map-notes', function() {
     beforeEach(function(done) {
       request(app)
-        .post('/api/things')
+        .post('/api/map-notes')
         .send({
-          name: 'New Thing',
-          info: 'This is the brand new thing!!!'
+          name: 'New MapNote',
+          info: 'This is the brand new mapNote!!!'
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -44,55 +44,55 @@ describe('Thing API:', function() {
           if (err) {
             return done(err);
           }
-          newThing = res.body;
+          newMapNote = res.body;
           done();
         });
     });
 
-    it('should respond with the newly created thing', function() {
-      newThing.name.should.equal('New Thing');
-      newThing.info.should.equal('This is the brand new thing!!!');
+    it('should respond with the newly created mapNote', function() {
+      newMapNote.name.should.equal('New MapNote');
+      newMapNote.info.should.equal('This is the brand new mapNote!!!');
     });
 
   });
 
-  describe('GET /api/things/:id', function() {
-    var thing;
+  describe('GET /api/map-notes/:id', function() {
+    var mapNote;
 
     beforeEach(function(done) {
       request(app)
-        .get('/api/things/' + newThing._id)
+        .get('/api/map-notes/' + newMapNote._id)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           if (err) {
             return done(err);
           }
-          thing = res.body;
+          mapNote = res.body;
           done();
         });
     });
 
     afterEach(function() {
-      thing = {};
+      mapNote = {};
     });
 
-    it('should respond with the requested thing', function() {
-      thing.name.should.equal('New Thing');
-      thing.info.should.equal('This is the brand new thing!!!');
+    it('should respond with the requested mapNote', function() {
+      mapNote.name.should.equal('New MapNote');
+      mapNote.info.should.equal('This is the brand new mapNote!!!');
     });
 
   });
 
-  describe('PUT /api/things/:id', function() {
-    var updatedThing;
+  describe('PUT /api/map-notes/:id', function() {
+    var updatedMapNote;
 
     beforeEach(function(done) {
       request(app)
-        .put('/api/things/' + newThing._id)
+        .put('/api/map-notes/' + newMapNote._id)
         .send({
-          name: 'Updated Thing',
-          info: 'This is the updated thing!!!'
+          name: 'Updated MapNote',
+          info: 'This is the updated mapNote!!!'
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -100,27 +100,27 @@ describe('Thing API:', function() {
           if (err) {
             return done(err);
           }
-          updatedThing = res.body;
+          updatedMapNote = res.body;
           done();
         });
     });
 
     afterEach(function() {
-      updatedThing = {};
+      updatedMapNote = {};
     });
 
-    it('should respond with the updated thing', function() {
-      updatedThing.name.should.equal('Updated Thing');
-      updatedThing.info.should.equal('This is the updated thing!!!');
+    it('should respond with the updated mapNote', function() {
+      updatedMapNote.name.should.equal('Updated MapNote');
+      updatedMapNote.info.should.equal('This is the updated mapNote!!!');
     });
 
   });
 
-  describe('DELETE /api/things/:id', function() {
+  describe('DELETE /api/map-notes/:id', function() {
 
     it('should respond with 204 on successful removal', function(done) {
       request(app)
-        .delete('/api/things/' + newThing._id)
+        .delete('/api/map-notes/' + newMapNote._id)
         .expect(204)
         .end((err, res) => {
           if (err) {
@@ -130,9 +130,9 @@ describe('Thing API:', function() {
         });
     });
 
-    it('should respond with 404 when thing does not exist', function(done) {
+    it('should respond with 404 when mapNote does not exist', function(done) {
       request(app)
-        .delete('/api/things/' + newThing._id)
+        .delete('/api/map-notes/' + newMapNote._id)
         .expect(404)
         .end((err, res) => {
           if (err) {

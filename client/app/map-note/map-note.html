@@ -1,2 +1,62 @@
-<div>This is the map-note view.</div>
-<drawer-menu></drawer-menu>
+
+    <md-toolbar md-scroll-shrink>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings">
+          <md-icon md-svg-icon="assets/icons/ic_menu_48px.svg"></md-icon>
+        </md-button>
+        <h2>
+          <span>Toolbar with Icon Buttons</span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="More">
+          <md-icon md-svg-icon="assets/icons/ic_more_vert_black_24px.svg"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+  <md-content flex class="grid">
+    <div layout="row" layout-xs="column" layout-wrap  >
+
+      <md-card ng-repeat="note in $ctrl.mapNotes" flex flex-gt-xs="45">
+        <md-card-header>
+          <md-card-avatar>
+            <img class="md-user-avatar" src="assets/avatars/1446654431_user.png"/>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">User</span>
+            <span class="md-subhead">subhead</span>
+          </md-card-header-text>
+        </md-card-header>
+        <img ng-src="{{note.screenUrl}}" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{note.name}}</span>
+            <span class="md-subhead">{{note.info}}</span>
+          </md-card-title-text>
+        </md-card-title>
+
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-icon-button" aria-label="Favorite">
+            <md-icon md-svg-icon="assets/icons/ic_send_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Edit" ng-click="$ctrl.openNote($index)">
+            <md-icon md-svg-icon="assets/icons/ic_edit_black_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Share">
+            <md-icon md-svg-icon="assets/icons/ic_share_black_24px.svg"></md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </md-content>
+
+  <md-button  class="md-fab md-fab-bottom-right" ng-click="$ctrl.addNote($event)" aria-label="Create person">
+    <md-icon md-svg-src="assets/icons/ic_add_black_24px.svg"></md-icon>
+  </md-button>
+
+
+
+
+
+
+

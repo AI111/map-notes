@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('mapNotesApp')
-  .directive('drawer-menu', function () {
+  .directive('drawermenu', function () {
     return {
       templateUrl: 'components/drawer-menu/drawer-menu.html',
-      restrict: 'EA',
+      restrict: 'E',
+      controller: 'DrawerMenuController',
+      controllerAs: 'drawer',
       link: function (scope, element, attrs) {
       }
     };

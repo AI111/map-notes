@@ -32,17 +32,15 @@
  */
 
 .browserupgrade {
-  margin: 0.2em 0;
   background: #ccc;
   color: #000;
-  padding: 0.2em 0;
 }
 
-.dark-primary-color    { background: #1976D2; }
-.default-primary-color { background: #2196F3; }
-.light-primary-color   { background: #BBDEFB; }
+.dark-primary-color    { background-color: #455A64; }
+.default-primary-color { background-color: #607D8B; }
+.light-primary-color   { background: #CFD8DC; }
 .text-primary-color    { color: #FFFFFF; }
-.accent-color          { background: #FF5722; }
+.accent-color          { background: #4CAF50; }
 .primary-text-color    { color: #212121; }
 .secondary-text-color  { color: #727272; }
 .divider-color         { border-color: #B6B6B6; }
@@ -56,10 +54,8 @@
 .toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
   color: white;
 }
-.active{
-  background-color:#BBDEFB ;
-}
-.active md-icon{
-  color:#FF5722;
+
+.change-my-css {
+  overflow: hidden;
 }
 

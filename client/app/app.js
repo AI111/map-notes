@@ -9,6 +9,7 @@ angular.module('mapNotesApp', [
   'ngSanitize',
   'ngMaterial',
   'ngMdIcons',
+  'ngMessages',
   'ui.router',
   'ui.bootstrap',
   'validation.match'

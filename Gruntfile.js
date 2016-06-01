@@ -19,6 +19,8 @@ module.exports = function (grunt) {
     buildcontrol: 'grunt-build-control',
     istanbul_check_coverage: 'grunt-mocha-istanbul',
     ngconstant: 'grunt-ng-constant'
+    // sloc:'grunt-sloc',
+    // complexity:'grunt-complexity'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -51,6 +53,28 @@ module.exports = function (grunt) {
         }
       }
     },
+    // sloc: {
+    //   'my-source-files': {
+    //     files: {
+    //       'path/to/target': [ '<%= yeoman.server %>/**/*.js', '<%= yeoman.client %>/{app,components}/**/*.js' ]
+    //     }
+    //   }
+    // },
+    // complexity: {
+    //   generic: {
+    //     src: ['<%= yeoman.server %>/**/*.js', '<%= yeoman.client %>/{app,components}/**/*.js'],
+    //     exclude: ['doNotTest.js'],
+    //     options: {
+    //       breakOnErrors: false,
+    //       jsLintXML: 'report.xml',         // create XML JSLint-like report
+    //       checkstyleXML: 'checkstyle.xml', // create checkstyle report
+    //       pmdXML: 'pmd.xml',               // create pmd report
+    //       errorsOnly: false,               // show only maintainability errors
+    //       hideComplexFunctions: false,     // only display maintainability
+    //       broadcast: false                 // broadcast data over event-bus
+    //     }
+    //   }
+    // },
     open: {
       server: {
         url: 'http://localhost:<%= express.options.port %>'

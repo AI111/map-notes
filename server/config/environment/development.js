@@ -8,7 +8,6 @@ module.exports = {
   mongo: {
     uri: 'mongodb://localhost/mapnotes-dev'
   },
-
   // Seed database on startup
   seedDB: true
 

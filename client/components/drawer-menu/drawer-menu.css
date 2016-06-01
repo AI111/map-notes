@@ -1,0 +1,21 @@
+.active{
+  background-color:#BBDEFB ;
+}
+.active md-icon{
+  color:#FF5722;
+}
+/*md-list-item a {*/
+  /*text-decoration: none;*/
+  /*display: inline-block;*/
+  /*border-radius: 4px;*/
+/*}*/
+/*md-list-item a:visited, a:link {*/
+  /*color: #607D8B;*/
+/*}*/
+/*nav a:hover {*/
+  /*color: #039be5;*/
+  /*background-color: #CFD8DC;*/
+/*}*/
+/*nav a.router-link-active {*/
+  /*color: #039be5;*/
+/*}*/
