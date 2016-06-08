@@ -11,5 +11,5 @@ router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
-
+app.post('/screen'controller.saveImg);
 module.exports = router;

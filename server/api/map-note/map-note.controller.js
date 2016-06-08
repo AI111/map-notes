@@ -12,7 +12,15 @@
 import _ from 'lodash';
 import MapNote from './map-note.model';
 import GeoJSON from 'mongoose-geojson-schema';
-
+import multer  from 'multer';
+var storage =   multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, '../..//uploads');
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.fieldname + '-' + Date.now());
+  }
+});
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
@@ -110,4 +118,12 @@ export function destroy(req, res) {
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));
+}
+export function saveImg(req,res){
+  upload(req, res, function (err) {
+    if (err) {
+      return res.end("Error uploading file.");
+    }
+    res.end("File is uploaded");
+  });
 }

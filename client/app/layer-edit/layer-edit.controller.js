@@ -24,12 +24,67 @@
 
 
     }
+    sengScreen(err, canvas) {
+        var img = document.createElement('img');
+        var dimensions = map.getSize();
+        img.width = dimensions.x;
+        img.height = dimensions.y;
+        img.src = canvas.toDataURL();
+        snapshot.innerHTML = '';
+        snapshot.appendChild(img);
+    }
+    configTiles(map){
+
+    }
+    configSearchPanell(map){
+      var arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider();
+
+      // create the geocoding control and add it to the map
+      var searchControl = L.esri.Geocoding.geosearch({
+        providers: [arcgisOnline]
+      }).addTo(map);
+
+      // create an empty layer group to store the results and add it to the map
+      var results = L.layerGroup().addTo(map);
+
+      // listen for the results event and add every result to the map
+      searchControl.on("results", function(data) {
+        results.clearLayers();
+        for (var i = data.results.length - 1; i >= 0; i--) {
+          results.addLayer(L.marker(data.results[i].latlng));
+        }
+      });
+    }
     initMap(){
       console.log("Init map");
       var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         osm = L.tileLayer(osmUrl, { maxZoom: 18, attribution: osmAttrib });
-      var map = new L.Map('mapid', { layers: [osm], center: new L.LatLng(this.note.latitude, this.note.longtitude), zoom: this.note.zoomLvl,zoomControl: false });
+
+      var satellite = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{mapId}/{z}/{x}/{y}.png?access_token={token}', {
+          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+          subdomains: ['a','b','c','d'],
+          mapId: 'mapbox.satellite',
+          token: 'pk.eyJ1IjoiYW4yMjUiLCJhIjoiY2luMnlsY3oxMDBwaXc4bHl5bzBzb3N3biJ9.iOtDQFjewRhAuhQ_kaqiGA'
+    });
+      var streets = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{mapId}/{z}/{x}/{y}.png?access_token={token}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        subdomains: ['a','b','c','d'],
+        mapId: 'mapbox.mapbox-streets-v7',
+        token: 'pk.eyJ1IjoiYW4yMjUiLCJhIjoiY2luMnlsY3oxMDBwaXc4bHl5bzBzb3N3biJ9.iOtDQFjewRhAuhQ_kaqiGA'
+      });
+
+
+      var map = new L.Map('mapid', { layers: [satellite,streets,osm], center: new L.LatLng(this.note.latitude, this.note.longtitude), zoom: this.note.zoomLvl,zoomControl: false });
+      L.control.layers({
+
+        "satellite": satellite,
+        "streets":streets,"osm": osm
+      }).addTo(map);
+
+      // this.configSearchPanell(map);
+
+
       var drawnItems =new L.FeatureGroup();
       map.addLayer(drawnItems);
 

@@ -29,6 +29,9 @@ module.exports = function(config) {
       'client/bower_components/leaflet/dist/leaflet-src.js',
       'client/bower_components/leaflet-dist/leaflet.js',
       'client/bower_components/leaflet-draw/dist/leaflet.draw-src.js',
+      'client/bower_components/leaflet-image/leaflet-image.js',
+      'client/bower_components/esri-leaflet/dist/esri-leaflet.js',
+      'client/bower_components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',
